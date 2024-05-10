@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+name: release-please
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v4
+        with:
+          # this assumes that you have created a personal access token
+          # (PAT classic) and configured it as a GitHub action secret named
+          # `RELEASE_SECRET_TOKEN` (this secret name is not important).
+          # Enable workflow while creating the token.
+          token: ${{ secrets.RELEASE_SECRET_TOKEN }}
+          # this is a built-in strategy in release-please, see "Action Inputs"
+          # for more options
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
