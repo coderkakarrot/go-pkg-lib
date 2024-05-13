@@ -4,6 +4,10 @@
   "separate-pull-requests": false,
   "release-type": "go",
   "tag-separator": "/",
-  "packages": { },
+  "packages": {
+    "metric": {
+      "package-name": "metric"
+    }
+  },
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
