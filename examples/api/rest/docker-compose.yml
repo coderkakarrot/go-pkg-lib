@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  goapp:
+    container_name: goapp
+    build:
+      context: ../../../
+      dockerfile: ./examples/api/rest/Dockerfile
+    ports:
+      - "8080:8080"

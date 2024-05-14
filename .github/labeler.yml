@@ -11,6 +11,12 @@ metric:
   - changed-files:
     - any-glob-to-any-file: 'metric/**'
 
+# Add 'rest' label to any change to rest package.
+rest:
+  - all:
+      - changed-files:
+          - any-glob-to-any-file: 'api/rest/**'
+
 # Add 'feature' label to any PR where the head branch name starts with `feature/feat` or has a `feature/feat` section in the name
 feature:
  - head-branch: ['^feature', 'feature', '^feat', 'feat']

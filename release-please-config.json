@@ -7,6 +7,9 @@
   "packages": {
     "metric": {
       "package-name": "metric"
+    },
+    "api/rest": {
+      "package-name": "rest"
     }
   },
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
