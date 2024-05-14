@@ -1,0 +1,42 @@
+---
+run:
+  skip-dirs-use-default: false
+
+linters:
+  enable-all: true
+  disable:
+    - depguard
+    - tparallel
+    - ireturn
+    - exhaustruct
+    - tagalign
+    - gci
+    - paralleltest
+    # There will be a lot of warnings because we are using short variable names.
+    # For us, its ok to use short variable names for wrapper functions.
+    - varnamelen
+    # We have defined some global error variables.
+    # For us, its better to disable this linter.
+    - gochecknoglobals
+    - gofumpt
+    # Since we have standardize the code style, we can disable this linter.
+    # It won't work if we wrap the standard error with fmt.Errorf.
+    - wrapcheck
+
+    # Deprecated ones:
+    - structcheck
+    - interfacer
+    - deadcode
+    - varcheck
+    - ifshort
+    - exhaustivestruct
+    - golint
+    - maligned
+    - nosnakecase
+    - scopelint
+
+gocyclo:
+  min-complexity: 15
+
+issues:
+  exclude-use-default: false
