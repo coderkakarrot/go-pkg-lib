@@ -9,6 +9,9 @@ on:
       golangci_lint_config_file:
         required: true
         type: string
+      threshold_file_coverage:
+        required: true
+        type: number
 
 jobs:
   lint-and-test:
@@ -33,8 +36,4 @@ jobs:
         run: go test -count=1 -coverprofile=./${{ inputs.target_directory }}/coverage.out -covermode=atomic ./${{ inputs.target_directory }}/... -tags=unit
 
       - name: check test coverage
-        uses: vladopajic/go-test-coverage@v2
-        with:
-          config: .testcoverage.yml
-          threshold-file: 0
-          profile: ${{ inputs.target_directory }}/coverage.out
+        run: go-test-coverage --config=.testcoverage.yml --profile=./${{ inputs.target_directory }}/coverage.out --threshold-file=${{ inputs.threshold_file_coverage }}
