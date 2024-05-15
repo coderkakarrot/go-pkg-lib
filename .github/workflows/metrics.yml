@@ -11,3 +11,4 @@ jobs:
       target_directory: 'metric'
       golangci_lint_config_file: '../.golangci.yml'
       threshold_file_coverage: 0
+      threshold_package_coverage: 0

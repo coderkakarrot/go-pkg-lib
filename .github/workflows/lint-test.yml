@@ -12,6 +12,9 @@ on:
       threshold_file_coverage:
         required: true
         type: number
+      threshold_package_coverage:
+        required: true
+        type: number
 
 jobs:
   lint-and-test:
@@ -38,4 +41,4 @@ jobs:
       - name: check test coverage
         run: |
           go install github.com/vladopajic/go-test-coverage/v2@v2.10.1
-          go-test-coverage --config=.testcoverage.yml --profile=./${{ inputs.target_directory }}/coverage.out --threshold-file=${{ inputs.threshold_file_coverage }}
+          go-test-coverage --config=.testcoverage.yml --profile=./${{ inputs.target_directory }}/coverage.out --threshold-file=${{ inputs.threshold_file_coverage }} --threshold-package=${{ inputs.threshold_package_coverage }}
