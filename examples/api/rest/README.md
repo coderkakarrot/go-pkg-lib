@@ -11,7 +11,7 @@ This is a simple example of rest api package usage. It demonstrates how to creat
 #### Clone the repository:
 
 ```bash
-git clone https://github.com/pantheon-systems/go-pkg-lib.git
+git clone https://github.com/coderkakarrots/go-pkg-lib.git
 ```
 
 #### Navigate to the rest api example directory:

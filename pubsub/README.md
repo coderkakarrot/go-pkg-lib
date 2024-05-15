@@ -7,7 +7,7 @@ This is a Go library for accessing Google Cloud Pub/Sub service, built on top of
 To install the library, use `go get`:
 
 ```bash
-go get -u github.com/pantheon-systems/go-pkg-lib/pubsub
+go get -u github.com/coderkakarrots/go-pkg-lib/pubsub
 ```
 
 ## Example

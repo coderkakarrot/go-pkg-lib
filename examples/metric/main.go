@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/pantheon-systems/go-pkg-lib/metric"
+	"github.com/coderkakarrots/go-pkg-lib/metric"
 )
 
 const meterName = "meterName"

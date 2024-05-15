@@ -1,10 +1,10 @@
-module github.com/pantheon-systems/go-pkg-lib/examples/pubsub
+module github.com/coderkakarrots/go-pkg-lib/examples/pubsub
 
-replace github.com/pantheon-systems/go-pkg-lib/pubsub => ../../pubsub
+replace github.com/coderkakarrots/go-pkg-lib/pubsub => ../../pubsub
 
 go 1.22.3
 
-require github.com/pantheon-systems/go-pkg-lib/pubsub v0.0.0-00010101000000-000000000000
+require github.com/coderkakarrots/go-pkg-lib/pubsub v0.0.0-00010101000000-000000000000
 
 require (
 	cloud.google.com/go v0.112.2 // indirect
