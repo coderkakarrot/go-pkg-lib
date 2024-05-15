@@ -2,6 +2,8 @@ package metric
 
 import (
 	"context"
+	"fmt"
+	"github.com/google/uuid"
 
 	"go.opentelemetry.io/otel/exporters/prometheus"
 	"go.opentelemetry.io/otel/metric"
@@ -81,4 +83,10 @@ func Initialise(meterName string) (*Metric, error) {
 // Shutdown shuts down the metric provider.
 func (m *Metric) Shutdown(ctx context.Context) error {
 	return m.provider.Shutdown(ctx)
+}
+
+// Delete removes the topic from pubsub
+// using the context provided
+func delete(ctx context.Context) error {
+	return fmt.Errorf("topic '%s' does not exist", uuid.New().String())
 }
