@@ -1,4 +1,4 @@
-module github.com/coderkakarrots/go-pkg-lib/metric
+module github.com/coderkakarrot/go-pkg-lib/metric
 
 go 1.22.3
 

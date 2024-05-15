@@ -9,4 +9,4 @@ jobs:
     uses: coderkakarrot/go-pkg-lib/.github/workflows/lint-test.yml@main
     with:
       target_directory: 'metric'
-      golangci_lint_config_file: '.golangci.yml'
+      golangci_lint_config_file: '../.golangci.yml'

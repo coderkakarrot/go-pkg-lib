@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: '1.22'
+          go-version: '1.22.3'
 
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v6
@@ -26,8 +26,15 @@ jobs:
           working-directory: ${{ inputs.target_directory }}
           args: --config ${{ inputs.golangci_lint_config_file }}
 
-      - name: Run unit test for
-        run: make test/unit TARGET_DIR=${{ inputs.target_directory }}
+      - name: Run unit test for ${{ inputs.target_directory }}
+        run: go test -v -tags=unit  ./${{ inputs.target_directory }}/...
 
-      - name: Run codecoverage
-        run: make test/unit/coverage TARGET_DIR=${{ inputs.target_directory }}
+      - name: generate unit test coverage
+        run: go test -count=1 -coverprofile=./${{ inputs.target_directory }}/coverage.out -covermode=atomic ./${{ inputs.target_directory }}/... -tags=unit
+
+      - name: check test coverage
+        uses: vladopajic/go-test-coverage@v2
+        with:
+          config: .testcoverage.yml
+          threshold-file: 0
+          profile: ${{ inputs.target_directory }}/coverage.out
