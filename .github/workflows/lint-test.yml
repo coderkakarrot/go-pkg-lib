@@ -24,7 +24,7 @@ jobs:
         with:
           version: v1.58.1
           working-directory: ${{ inputs.target_directory }}
-         # args: --config ${{ inputs.golangci_lint_config_file }}
+          args: --config ${{ inputs.golangci_lint_config_file }}
 
       - name: Run unit test for
         run: make test/unit TARGET_DIR=${{ inputs.target_directory }}
