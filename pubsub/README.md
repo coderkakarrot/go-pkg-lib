@@ -13,3 +13,4 @@ go get -u github.com/coderkakarrots/go-pkg-lib/pubsub
 ## Example
 
 Refer the [example/pubsub](./../examples/pubsub/) directory to see how it works.
+
