@@ -6,14 +6,19 @@ import (
 	"go.opentelemetry.io/otel/metric"
 )
 
-// Histogram is a metric that samples observations (usually things like request durations or response sizes) and counts them in configurable buckets.
+// Histogram is a metric that samples observations (usually things like request durations or response sizes)
+// and counts them in configurable buckets.
 type Histogram struct {
 	histogram metric.Float64Histogram
 }
 
 // NewHistogram creates a new histogram with the given name, description and bounds.
 func (m *Metric) NewHistogram(name, description string, bounds ...float64) (*Histogram, error) {
-	h, err := m.meter.Float64Histogram(name, metric.WithDescription(description), metric.WithExplicitBucketBoundaries(bounds...))
+	h, err := m.meter.Float64Histogram(
+		name,
+		metric.WithDescription(description),
+		metric.WithExplicitBucketBoundaries(bounds...),
+	)
 	if err != nil {
 		return nil, err
 	}

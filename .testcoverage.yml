@@ -1,0 +1,15 @@
+---
+# (mandatory)
+# Path to coverprofile file (output of `go test -coverprofile` command)
+profile: coverage.out
+
+# (optional)
+# When specified reported file paths will not contain local prefix in the output
+local-prefix: "github.com/pantheon-systems/go-pkg-lib"
+
+# Holds coverage thresholds percentages, values should be in range [0-100]
+threshold:
+  # The minimum total coverage project should have
+  total: 50
+  # The minimum package coverage project should have
+  package: 50
