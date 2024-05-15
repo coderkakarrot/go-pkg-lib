@@ -3,7 +3,7 @@ name: Go Package Linting and Testing
 on:
   workflow_call:
     inputs:
-      working_directory:
+      target_directory:
         required: true
         type: string
       golangci_lint_config_file:
@@ -19,14 +19,15 @@ jobs:
         with:
           go-version: '1.22'
 
-      - name: Install dependencies
-        if: ${{ inputs.working_directory }}
-        run: go mod download
-        working-directory: ${{ inputs.working_directory }}
-
-      - name: golangci-lint
+      - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
           version: v1.58.1
-          working-directory: ${{ inputs.working_directory }}
-          args: --config=${{ inputs.golangci_lint_config_file }}
+          working-directory: ${{ inputs.target_directory }}
+         # args: --config ${{ inputs.golangci_lint_config_file }}
+
+      - name: Run unit test for
+        run: make test/unit TARGET_DIR=${{ inputs.target_directory }}
+
+      - name: Run codecoverage
+        run: make test/unit/coverage TARGET_DIR=${{ inputs.target_directory }}

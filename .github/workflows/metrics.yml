@@ -1,13 +1,12 @@
 name: Metrics Package
-
 on:
   push:
     branches:
       - main
 
 jobs:
-  call_reusable_workflow:
-    uses: coderkakarrot/go-pkg-lib/.github/workflows/go-lint-and-test.yml@main
+  metric:
+    uses: coderkakarrot/go-pkg-lib/.github/workflows/lint-test.yml@main
     with:
-      working_directory: 'metric'
+      target_directory: 'metric'
       golangci_lint_config_file: '../.golangci.yml'
