@@ -1,4 +1,4 @@
-module github.com/pantheon-systems/go-pkg-lib/metric
+module github.com/coderkakarrots/go-pkg-lib/metric
 
 go 1.22.3
 

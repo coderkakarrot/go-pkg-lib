@@ -13,7 +13,7 @@ This is a simple example of how to publish a message to a Pub/Sub topic using pu
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/pantheon-systems/go-pkg-lib.git
+git clone https://github.com/coderkakarrots/go-pkg-lib.git
 ```
 
 2. Navigate to the project directory:

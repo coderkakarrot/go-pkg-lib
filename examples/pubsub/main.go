@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/pantheon-systems/go-pkg-lib/pubsub"
+	"github.com/coderkakarrots/go-pkg-lib/pubsub"
 )
 
 const (

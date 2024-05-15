@@ -1,10 +1,10 @@
-module github.com/pantheon-systems/go-pkg-lib/examples/metric
+module github.com/coderkakarrots/go-pkg-lib/examples/metric
 
-replace github.com/pantheon-systems/go-pkg-lib/metric => ../../metric
+replace github.com/coderkakarrots/go-pkg-lib/metric => ../../metric
 
 go 1.22.3
 
-require github.com/pantheon-systems/go-pkg-lib/metric v0.0.0-00010101000000-000000000000
+require github.com/coderkakarrots/go-pkg-lib/metric v0.0.0-00010101000000-000000000000
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect

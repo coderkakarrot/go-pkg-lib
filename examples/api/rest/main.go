@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/pantheon-systems/go-pkg-lib/api/rest"
-	"github.com/pantheon-systems/go-pkg-lib/api/rest/middleware"
+	"github.com/coderkakarrots/go-pkg-lib/api/rest"
+	"github.com/coderkakarrots/go-pkg-lib/api/rest/middleware"
 )
 
 func main() {

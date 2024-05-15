@@ -1,4 +1,4 @@
-module github.com/pantheon-systems/go-pkg-lib/pubsub
+module github.com/coderkakarrots/go-pkg-lib/pubsub
 
 go 1.22.3
 
