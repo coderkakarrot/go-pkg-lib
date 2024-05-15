@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/coderkakarrot/go-pkg-lib/compare/api/rest/v1.2.0...api/rest/v1.2.1) (2024-05-15)
+
+
+### Bug Fixes
+
+* test commit 2. ([#6](https://github.com/coderkakarrot/go-pkg-lib/issues/6)) ([8f85b5d](https://github.com/coderkakarrot/go-pkg-lib/commit/8f85b5dbc44fd93c9e71dfac1fcd55aea78193d0))
+
 ## [1.2.0](https://github.com/coderkakarrot/go-pkg-lib/compare/api/rest-v1.1.0...api/rest/v1.2.0) (2024-05-15)
 
 
