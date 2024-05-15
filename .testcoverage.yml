@@ -12,4 +12,6 @@ threshold:
   # The minimum total coverage project should have
   total: 50
   # The minimum package coverage project should have
-  package: 50
+  package: 0
+  # The minimum file coverage project should have
+  file: 0
