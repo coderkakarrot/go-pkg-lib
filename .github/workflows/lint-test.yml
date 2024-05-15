@@ -36,4 +36,6 @@ jobs:
         run: go test -count=1 -coverprofile=./${{ inputs.target_directory }}/coverage.out -covermode=atomic ./${{ inputs.target_directory }}/... -tags=unit
 
       - name: check test coverage
-        run: go-test-coverage --config=.testcoverage.yml --profile=./${{ inputs.target_directory }}/coverage.out --threshold-file=${{ inputs.threshold_file_coverage }}
+        run: |
+          go install github.com/vladopajic/go-test-coverage/v2@v2.10.1
+          go-test-coverage --config=.testcoverage.yml --profile=./${{ inputs.target_directory }}/coverage.out --threshold-file=${{ inputs.threshold_file_coverage }}
