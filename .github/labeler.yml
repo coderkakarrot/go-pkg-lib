@@ -17,6 +17,13 @@ rest:
       - changed-files:
           - any-glob-to-any-file: 'api/rest/**'
 
+# Add 'pubsub' label to any change to pubsub package.
+pubsub:
+- all:
+  - changed-files:
+    - any-glob-to-any-file: 'pubsub/**'
+    - any-glob-to-any-file: 'examples/pubsub/**'
+
 # Add 'feature' label to any PR where the head branch name starts with `feature/feat` or has a `feature/feat` section in the name
 feature:
  - head-branch: ['^feature', 'feature', '^feat', 'feat']

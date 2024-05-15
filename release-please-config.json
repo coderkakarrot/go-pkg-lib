@@ -10,6 +10,9 @@
     },
     "api/rest": {
       "package-name": "rest"
+    },
+    "pubsub": {
+      "package-name": "pubsub"
     }
   },
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
