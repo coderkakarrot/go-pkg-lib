@@ -9,7 +9,7 @@
       "package-name": "metric"
     },
     "api/rest": {
-      "package-name": "rest"
+      "package-name": "api/rest"
     },
     "pubsub": {
       "package-name": "pubsub"
