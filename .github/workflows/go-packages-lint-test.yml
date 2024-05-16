@@ -19,7 +19,6 @@ jobs:
       metric: ${{ steps.filter.outputs.metric }}
       api_rest: ${{ steps.filter.outputs.api_rest }}
     steps:
-      - uses: actions/checkout@v4
       - uses: dorny/paths-filter@v3
         id: filter
         with:
@@ -36,6 +35,8 @@ jobs:
     with:
       target_directory: 'metric'
       golangci_lint_config_file: '../.golangci.yml'
+      go_version: '1.22.3'
+      golangci_version: 'v1.58.1'
 
   api-rest-package-lint-test:
     needs: changes
@@ -44,3 +45,5 @@ jobs:
     with:
       target_directory: 'api/rest'
       golangci_lint_config_file: '../../.golangci.yml'
+      go_version: '1.22.3'
+      golangci_version: 'v1.58.1'
