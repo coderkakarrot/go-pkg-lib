@@ -1,12 +1,13 @@
 package middleware
 
 import (
-	// Standard library packages
+	// Standard library packages.
 	"context"
 	"fmt"
 	"net/http"
-	// Pantheon internal package
-	"github.com/coderkakarrots/go-pkg-lib/api/rest"
+
+	// Pantheon internal package.
+	"github.com/coderkakarrot/go-pkg-lib/api/rest"
 )
 
 // Errors handles errors coming out of the call chain. It detects normal
