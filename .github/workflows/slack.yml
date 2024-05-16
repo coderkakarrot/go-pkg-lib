@@ -2,7 +2,7 @@ name: Release Notification to Slack (with slackify-markdown and webhook)
 
 on:
   release:
-    types: [published]
+    types: [edited, published]
 
 jobs:
   notify:
@@ -15,7 +15,13 @@ jobs:
         id: slackify
         uses: LoveToKnow/slackify-markdown-action@v1
         with:
-          input: ${{ github.event.release.body }}
+          text: ${{ github.event.release.body }}
+
+      - name: check output
+        run: echo "${{ steps.slackify.outputs.text }}"
+
+      - name: check release context values
+        run: echo "${{ github.event.release }}"
 
       - name: Send Slack Notification
         uses: slackapi/slack-github-action@v1.24.0
@@ -23,7 +29,7 @@ jobs:
           # For posting a simple message using incoming webhook
           payload: |
             {
-              "text": "🚀 New Release: *${{ github.event.release.name }}*\n${{ steps.slackify.outputs.output }}"
+              "text": "🚀 New Release: *${{ github.event.release.tag_name }}*\n${{ steps.slackify.outputs.text }}"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
