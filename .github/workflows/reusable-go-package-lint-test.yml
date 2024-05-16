@@ -9,15 +9,6 @@ on:
       golangci_lint_config_file:
         required: true
         type: string
-#      threshold_file_coverage:
-#        required: true
-#        type: number
-#      threshold_package_coverage:
-#        required: true
-#        type: number
-#      threshold_total_coverage:
-#        required: true
-#        type: number
 
 jobs:
   reusable-go-package-lint-test:
