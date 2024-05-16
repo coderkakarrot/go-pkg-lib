@@ -1,0 +1,21 @@
+name: Rest API
+on:
+  push:
+    paths:
+      - 'api/rest/**'
+    branches:
+      - main
+  pull_request:
+    paths:
+      - 'api/rest/**'
+    branches:
+      - main
+
+jobs:
+  lint-test:
+    uses: ./.github/workflows/package-ci.yml
+    with:
+      target_directory: 'api/rest'
+      golangci_lint_config_file: '../../.golangci.yml'
+      go_version: '1.22.3'
+      golangci_version: 'v1.58.1'

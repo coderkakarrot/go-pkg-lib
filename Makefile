@@ -67,7 +67,7 @@ test/integration/coverage: check-target-directory-option
 
 ## lint: run linter
 .PHONY: lint
-lint:
+lint: check-target-directory-option
 	@if [ -z "$(GOLANGCI_LINT)" ] || ! $(GOLANGCI_LINT) version | grep -q "$(GOLANGCI_LINT_VERSION)$$"; then \
 		echo "golangci-lint not found or version mismatch. Installing $(GOLANGCI_LINT_VERSION)..."; \
 		go install github.com/golangci/golangci-lint/cmd/golangci-lint@${GOLANGCI_LINT_VERSION}; \
@@ -75,3 +75,15 @@ lint:
 	@ROOT_DIR=$(pwd)
 	@echo "Running golangci-lint run -v"
 	@cd $(TARGET_DIR) && $(GOLANGCI_LINT) run -v --config $(PROJECT_ROOT)/.golangci.yml
+
+## generate/unit/test/coverage: generates unit test coverage
+.PHONY: generate/unit/test/coverage
+generate/unit/test/coverage: check-target-directory-option
+	@echo "Generating test coverage report"
+	go test -count=1 -coverprofile=./$(TARGET_DIR)/coverage.out -covermode=atomic ./$(TARGET_DIR)/... -tags=unit
+
+## generate/unit/integration/coverage: generates integration test coverage
+.PHONY: generate/integration/test/coverage
+generate/integration/test/coverage: check-target-directory-option
+	@echo "Generating test coverage report"
+	go test -count=1 -coverprofile=./$(TARGET_DIR)/coverage.out -covermode=atomic ./$(TARGET_DIR)/... -tags=integration

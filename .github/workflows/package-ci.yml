@@ -9,30 +9,34 @@ on:
       golangci_lint_config_file:
         required: true
         type: string
+      go_version:
+        required: true
+        type: string
+      golangci_version:
+        required: true
+        type: string
 
 jobs:
-  reusable-go-package-lint-test:
+  lint-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: '1.22.3'
+          go-version: ${{ inputs.go_version }}
 
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v6
         with:
-          version: v1.58.1
+          version: ${{ inputs.golangci_version }}
           working-directory: ${{ inputs.target_directory }}
           args: --config ${{ inputs.golangci_lint_config_file }}
 
       - name: Run unit test for ${{ inputs.target_directory }}
-        run: go test -v -tags=unit  ./${{ inputs.target_directory }}/...
+        run: make test/unit TARGET_DIR=${{ inputs.target_directory }}
 
       - name: generate unit test coverage
-        run: go test -count=1 -coverprofile=./${{ inputs.target_directory }}/coverage.out -covermode=atomic ./${{ inputs.target_directory }}/... -tags=unit
+        run: make generate/unit/test/coverage TARGET_DIR=${{ inputs.target_directory }}
 
       - name: check test coverage
-        run: |
-          go install github.com/vladopajic/go-test-coverage/v2@v2.10.1
-          go-test-coverage --config=.testcoverage.yml --profile=./${{ inputs.target_directory }}/coverage.out
+        run: make test/unit/coverage TARGET_DIR=${{ inputs.target_directory }}
