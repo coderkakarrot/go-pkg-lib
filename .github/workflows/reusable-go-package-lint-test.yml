@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version: ${{ inputs.target_directory }}
+          go-version: ${{ inputs.go_version }}
 
       - name: Run golangci-lint
         uses: golangci/golangci-lint-action@v6

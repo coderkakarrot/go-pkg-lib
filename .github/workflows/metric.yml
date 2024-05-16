@@ -1,0 +1,21 @@
+name: Metric
+on:
+  push:
+    paths:
+      - 'metric/**'
+    branches:
+      - main
+  pull_request:
+    paths:
+      - 'metric/**'
+    branches:
+      - main
+
+jobs:
+  lint-test:
+    uses: ./.github/workflows/reusable-go-package-lint-test.yml
+    with:
+      target_directory: 'metric'
+      golangci_lint_config_file: '../.golangci.yml'
+      go_version: '1.22.3'
+      golangci_version: 'v1.58.1'
