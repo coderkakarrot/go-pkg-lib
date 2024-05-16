@@ -1,24 +1,29 @@
-name: Release Notification
+name: Release Notification to Slack (with slackify-markdown and webhook)
 
 on:
   release:
     types: [published]
 
 jobs:
-  notify_slack:
+  notify:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # Fetch all history to get release notes
 
-      - name: Extract Release Notes
-        id: get_release_notes
-        run: |
-          echo "Pratik kambkle"
-          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
-          echo "${{ github.event.release.body }}" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-          cat $GITHUB_ENV
-          cat "${{ github.event.release.body }}"
+      - name: Convert Release Notes to Slack Markdown
+        id: slackify
+        uses: LoveToKnow/slackify-markdown-action@v1
+        with:
+          input: ${{ github.event.release.body }}
+
+      - name: Send Slack Notification
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          # For posting a simple message using incoming webhook
+          payload: |
+            {
+              "text": "🚀 New Release: *${{ github.event.release.name }}*\n${{ steps.slackify.outputs.output }}"
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
