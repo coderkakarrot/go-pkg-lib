@@ -1,0 +1,24 @@
+name: Release Notification
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify_slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetch all history to get release notes
+
+      - name: Extract Release Notes
+        id: get_release_notes
+        run: |
+          echo "Pratik kambkle"
+          echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+          echo "${{ github.event.release.body }}" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+          cat $GITHUB_ENV
+          cat "${{ github.event.release.body }}"
