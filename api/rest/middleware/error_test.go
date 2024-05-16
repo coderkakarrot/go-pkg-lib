@@ -12,7 +12,7 @@ import (
 	"os"
 	"testing"
 	// Pantheon internal package
-	"github.com/coderkakarrots/go-pkg-lib/api/rest"
+	"github.com/coderkakarrot/go-pkg-lib/api/rest"
 )
 
 func TestErrorsMiddleware(t *testing.T) {
