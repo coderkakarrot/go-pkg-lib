@@ -11,25 +11,29 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Convert Release Notes to Slack Markdown
-        id: slackify
-        uses: LoveToKnow/slackify-markdown-action@v1
+      - name: print release notes
+        run: |
+            echo ${{ githuh.event.release.body }}  
+
+      - uses: actions/setup-go@v5
         with:
-          text: ${{ github.event.release.body }}
+          go-version: "1.22.3"
 
-      - name: check output
-        run: echo "${{ steps.slackify.outputs.text }}"
-
-      - name: check release context values
-        run: echo "${{ github.event.release }}"
-
-      - name: Send Slack Notification
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          # For posting a simple message using incoming webhook
-          payload: |
-            {
-              "text": "🚀 New Release: *${{ github.event.release.tag_name }}*\n${{ steps.slackify.outputs.text }}"
-            }
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+#
+#      - name: slackify markdown
+#        run: |
+#          SLACKIFY_RELEASE_NOTES_MARKDOWN=$(go run ./internal/actions/cmd/slackmarkdown/main.go -release-notes=${{ env.RELEASE_NOTES_MARKDOWN }})
+#          echo SLACKIFY_RELEASE_NOTES_MARKDOWN=$SLACKIFY_RELEASE_NOTES_MARKDOWN >> $GITHUB_ENV
+#
+#      - name: print slackify release notes
+#        run: |
+#          echo ${{ env.SLACKIFY_RELEASE_NOTES_MARKDOWN }}
+#
+#
+#      - name: Send Slack Notification
+#        uses: slackapi/slack-github-action@v1.24.0
+#        with:
+#          # For posting a simple message using incoming webhook
+#          payload: ${{env.SLACKIFY_RELEASE_NOTES_MARKDOWN}}
+#        env:
+#          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
