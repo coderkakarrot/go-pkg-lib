@@ -26,18 +26,15 @@ jobs:
           SLACKIFY_RELEASE_NOTES_MARKDOWN=$(go run ./internal/actions/cmd/slackmarkdown/main.go -release-notes="${{ github.event.release.body }}")
           echo $SLACKIFY_RELEASE_NOTES_MARKDOWN
           echo SLACKIFY_RELEASE_NOTES_MARKDOWN=$SLACKIFY_RELEASE_NOTES_MARKDOWN >> $GITHUB_ENV
-#          echo "::set-output name=SLACKIFY_RELEASE_NOTES_MARKDOWN::$SLACKIFY_RELEASE_NOTES_MARKDOWN"
-#          echo "SLACKIFY_RELEASE_NOTES_MARKDOWN=\"$SLACKIFY_RELEASE_NOTES_MARKDOWN\"" >> $GITHUB_OUTPUT
-#
+
       - name: print slackify release notes
         run: |
           echo "${{ env.SLACKIFY_RELEASE_NOTES_MARKDOWN }}"
-
 
       - name: Send Slack Notification
         uses: slackapi/slack-github-action@v1.24.0
         with:
           # For posting a simple message using incoming webhook
-          payload: '{"text": "${{ env.SLACKIFY_RELEASE_NOTES_MARKDOWN }}"}'
+          payload: '{"text": "*:rocket: New Release: ${{ github.event.release.tag_name }} :rocket:* \n ${{ env.SLACKIFY_RELEASE_NOTES_MARKDOWN }}"}'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
