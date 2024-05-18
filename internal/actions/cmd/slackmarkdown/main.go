@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/eritikass/githubmarkdownconvertergo"
 	"log"
+	"regexp"
 )
 
 func main() {
@@ -28,6 +29,9 @@ func main() {
 	} else {
 		slackText = "No release notes provided." // or handle empty input differently
 	}
+
+	re := regexp.MustCompile(`\r\n|\r|\n`)
+	slackText = re.ReplaceAllString(slackText, "\\n")
 
 	//test := fmt.Sprintf("{\"text\": \"%s\"}", slackText)
 
