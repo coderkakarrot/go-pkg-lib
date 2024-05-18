@@ -32,9 +32,27 @@ jobs:
           echo "${{ env.SLACKIFY_RELEASE_NOTES_MARKDOWN }}"
 
       - name: Send Slack Notification
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v1.26
         with:
           # For posting a simple message using incoming webhook
-          payload: '{"text": "*:rocket: New Release: ${{ github.event.release.tag_name }} :rocket:* \n ${{ env.SLACKIFY_RELEASE_NOTES_MARKDOWN }}"}'
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*:rocket: New Release: ${{ github.event.release.tag_name }} :rocket:*"
+                  }
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "${{ env.SLACKIFY_RELEASE_NOTES_MARKDOWN }}"
+                  }
+                }
+              ]
+            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
