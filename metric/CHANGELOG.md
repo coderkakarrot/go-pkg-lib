@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1](https://github.com/coderkakarrot/go-pkg-lib/compare/metric/v1.2.0...metric/v1.2.1) (2024-05-20)
+
+
+### Bug Fixes
+
+* test commit 3. ([980ce57](https://github.com/coderkakarrot/go-pkg-lib/commit/980ce5748efffec032b015bc38ea3b80d3d5a5db))
+* test commit 5. ([45f6c47](https://github.com/coderkakarrot/go-pkg-lib/commit/45f6c47f84f80ccb12adcab771487314443fbcb9))
+
 ## [1.2.0](https://github.com/coderkakarrot/go-pkg-lib/compare/metric-v1.1.0...metric/v1.2.0) (2024-05-15)
 
 
