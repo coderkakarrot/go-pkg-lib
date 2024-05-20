@@ -3,6 +3,10 @@ name: Release Notification to Slack (with slackify-markdown and webhook)
 on:
   release:
     types: [edited, published]
+    tags:
+      - 'metric/v*'
+      - 'api/rest/v*'
+      - 'pubsub/v*'
 
 jobs:
   notify:
@@ -32,7 +36,7 @@ jobs:
           echo "${{ env.SLACKIFY_RELEASE_NOTES_MARKDOWN }}"
 
       - name: Send Slack Notification
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v1.26.0
         with:
           # For posting a simple message using incoming webhook
           payload: '{"text": "*:rocket: New Release: ${{ github.event.release.tag_name }} :rocket:* \n ${{ env.SLACKIFY_RELEASE_NOTES_MARKDOWN }}"}'
